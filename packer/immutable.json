@@ -1,0 +1,47 @@
+{
+  "builders": [
+    {
+      "type": "yandex",
+      "service_account_key_file": "{{user `Service_Account_Key_Var`}}",
+      "folder_id": "{{user `Folder_Id_Var`}}",
+      "source_image_family": "{{user `Source_Image_Var`}}",
+      "image_name": "reddit-full-{{timestamp}}",
+      "image_family": "reddit-full",
+      "ssh_username": "ubuntu",
+      "platform_id": "standard-v1",
+      "subnet_id": "{{user `Subnet_Id_Var`}}",
+      "use_ipv4_nat": "true"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "files/start_puma_server.sh",
+      "destination": "~/"
+    },
+    {
+      "type": "file",
+      "source": "files/puma.service",
+      "destination": "~/puma.service"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo cp ~/puma.service /etc/systemd/system/puma.service",
+        "rm ~/puma.service",
+        "chmod +x /home/ubuntu/start_puma_server.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": ["scripts/install_ruby.sh", "scripts/install_mongodb.sh"],
+      "execute_command": "sudo {{.Path}}",
+      "pause_before": "10s"
+    },
+    {
+      "type": "shell",
+      "script": "files/deploy_reddit.sh",
+      "pause_before": "10s"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "Service_Account_Key_Var": "key_example.json",
+  "Folder_Id_Var": "real_folder_id",
+  "Subnet_Id_Var": "real_subnet",
+  "Source_Image_Var": "real_image_family"
+}
