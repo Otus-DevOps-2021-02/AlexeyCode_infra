@@ -1,0 +1,10 @@
+cloud_id                 = "b1genqs138dcedl7rm7a"
+subnet_id                = "e9bdmm24s0c72ur5fpbq"
+folder_id                = "b1gkfa07qdkgk3qp17mm"
+service_account_key_file = "key_example.json"
+image_id                 = "fd8iu1kf9dlq1qm2q314"
+public_key_path          = "~/.ssh/appuser.pub"
+private_key_path         = "~/.ssh/appuser"
+instance_count           = 1
+db_disk_image            = "fd8achm9rdc01f52uud9"
+app_disk_image           = "fd83igrhi7542436jnb4"

@@ -1,0 +1,16 @@
+{
+  "app": {
+    "hosts": {
+      "${app_names}": {
+        "ansible_host": "${app_ips}"
+      }
+    }
+  },
+  "db": {
+    "hosts": {
+      "${db_names}": {
+        "ansible_host": "${db_ips}"
+      }
+    }
+  }
+}
