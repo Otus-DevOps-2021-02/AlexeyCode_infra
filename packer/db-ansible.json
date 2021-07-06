@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+      "type": "yandex",
+      "service_account_key_file": "{{user `Service_Account_Key_Var`}}",
+      "folder_id": "{{user `Folder_Id_Var`}}",
+      "source_image_family": "{{user `Source_Image_Var`}}",
+      "image_name": "reddit-base-db-{{timestamp}}",
+      "image_family": "reddit-base-db",
+      "ssh_username": "ubuntu",
+      "platform_id": "standard-v1",
+      "subnet_id": "{{user `Subnet_Id_Var`}}",
+      "use_ipv4_nat": "true"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "ansible/packer_db.yml"
+    }
+  ]
+}
