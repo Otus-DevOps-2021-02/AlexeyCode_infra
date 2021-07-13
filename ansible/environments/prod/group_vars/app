@@ -1,0 +1,4 @@
+db_host: 84.201.131.14
+nginx_port: 80
+server_name: "reddit"
+proxy_pass_var: http://127.0.0.1:9292
