@@ -15,22 +15,8 @@
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "scripts": ["scripts/install_mongodb.sh"],
-      "execute_command": "sudo {{.Path}}",
-      "pause_before": "10s"
-    },
-    {
-      "type": "file",
-      "source": "files/mongod.conf",
-      "destination": "~/mongod.conf"
-    },
-    {
-      "type": "shell",
-      "inline": [
-        "sudo cp ~/mongod.conf /etc/mongod.conf",
-        "rm ~/mongod.conf"
-      ]
+      "type": "ansible",
+      "playbook_file": "ansible/packer_db.yml"
     }
   ]
 }
